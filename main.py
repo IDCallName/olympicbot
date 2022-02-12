@@ -22,9 +22,13 @@ CURSOR = DATABASE.cursor()
 
 # Создать чайный гриб
 from telegram.ext import ConversationHandler
+from telegram import InlineKeyboardButton
+from telegram import InlineKeyboardMarkup
 
 def cmd_start(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я культурный бот! Чем я могу тебе помочь? Чтобы начать напиши 'Привет'")
+    markup = InlineKeyboardMarkup([[InlineKeyboardButton("wtf")]])
+    
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я олимпиадный бот!", reply_markup=markup)
 
 # Когда привет
 def msg_greetings(update, context):
