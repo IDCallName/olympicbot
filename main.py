@@ -43,15 +43,19 @@ def msg_question(update, context):
 
 # Ответы на вопрос об эрмитаже
 def msg_answer(update, context):
-    right_answer = 'a'
-    if(update.effective_message.text == right_answer):
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Правильный ответ")
+    if(update.effective_message.text == "/stop"):
+        cmd_start(update, context)
     else:
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Неверно! Правильный вариант: "+right_answer)
-    
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Текст задания. Введите /stop чтобы прекратить решать задания")
-    
-    return STATE_ANSWER
+        right_answer = 'a'
+        
+        if(update.effective_message.text == right_answer):
+            context.bot.send_message(chat_id=update.effective_chat.id, text="Правильный ответ")
+        else:
+            context.bot.send_message(chat_id=update.effective_chat.id, text="Неверно! Правильный вариант: "+right_answer)
+
+        context.bot.send_message(chat_id=update.effective_chat.id, text="Текст задания. Введите /stop чтобы прекратить решать задания")
+
+        return STATE_ANSWER
 
 ## Устанавливаем какие-то держатели
 from telegram.ext import CommandHandler
