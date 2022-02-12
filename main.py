@@ -56,7 +56,7 @@ def msg_answer(update, context):
 
 # Кнопки
 def inline_function(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text=update.callback_query)
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.callback_query.message)
     
 ## Устанавливаем какие-то держатели
 from telegram.ext import CommandHandler
