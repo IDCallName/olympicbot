@@ -30,7 +30,7 @@ def cmd_start(update, context):
     markup = InlineKeyboardMarkup([[InlineKeyboardButton("Выбрать уровень", callback_data="settings_level")], [InlineKeyboardButton("Выбрать класс", callback_data="settings_grade")]])
     
     context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я олимпиадный бот! ", reply_markup=markup)
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Введите /go для получения задания", reply_markup=markup)
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Введите /go для получения задания")
 
 def cmd_stop(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Вы вышли. Введите /go для получения новых заданий", reply_markup=markup)
@@ -49,7 +49,9 @@ def msg_answer(update, context):
     else:
         context.bot.send_message(chat_id=update.effective_chat.id, text="Неверно! Правильный вариант: "+right_answer)
     
-    return STATE_QUESTION
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Текст задания. Введите /stop чтобы прекратить решать задания")
+    
+    return STATE_ANSWER
 
 ## Устанавливаем какие-то держатели
 from telegram.ext import CommandHandler
