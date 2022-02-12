@@ -28,6 +28,8 @@ from telegram import InlineKeyboardMarkup
 
 # Команды
 def cmd_start(update, context):
+    print("uhfifuyjlkfjlfh")
+    
     markup = InlineKeyboardMarkup([[InlineKeyboardButton("Выбрать уровень", callback_data="settings_level")], [InlineKeyboardButton("Выбрать класс", callback_data="settings_grade")]])
     
     context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я олимпиадный бот! ", reply_markup=markup)
@@ -56,6 +58,8 @@ def msg_answer(update, context):
 
 # Кнопки
 def inline_function(update, context):
+    print("hfkuyfyc")
+    
     context.bot.send_message(chat_id=update.effective_chat.id, text=update.inline_query.query)
     
 ## Устанавливаем какие-то держатели
