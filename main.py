@@ -26,22 +26,19 @@ from telegram.ext import ConversationHandler
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
 
+# Команды
 def cmd_start(update, context):
     markup = InlineKeyboardMarkup([[InlineKeyboardButton("Выбрать уровень", callback_data="settings_level")], [InlineKeyboardButton("Выбрать класс", callback_data="settings_grade")]])
     
     context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я олимпиадный бот! ", reply_markup=markup)
     context.bot.send_message(chat_id=update.effective_chat.id, text="Введите /go для получения задания")
 
-def cmd_stop(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Вы вышли. Введите /go для получения новых заданий", reply_markup=markup)
-    
-# Когда привет
+# Диалог
 def msg_question(update, context):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Текст задания. Введите /stop чтобы прекратить решать задания")
     
     return STATE_ANSWER
 
-# Ответы на вопрос об эрмитаже
 def msg_answer(update, context):
     if(update.effective_message.text == "/stop"):
         cmd_start(update, context)
@@ -57,9 +54,14 @@ def msg_answer(update, context):
 
         return STATE_ANSWER
 
+# Кнопки
+def inline_function(update, context):
+    context.bot.send_message(chat_id=update.effective_chat.id, text=update.callback_query)
+    
 ## Устанавливаем какие-то держатели
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler
+from telegram.ext import InlineQueryHandler
 from telegram.ext import filters
 
 start_handler = CommandHandler('start', cmd_start)
@@ -71,12 +73,14 @@ conversation_handler = ConversationHandler(
         STATE_ANSWER: [MessageHandler(filters.Filters.text, msg_answer)],
     },
 
-    fallbacks = [CommandHandler('stop', cmd_start)]
+    fallbacks = []
 )
+inline_handler = InlineQueryHandler(inline_function)
 
 # Устанавливаем какие-то держатели окончательно
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(conversation_handler)
+dispatcher.add_handler(inline_handler)
 
 ## Запускаем бота
 updater.start_polling()
