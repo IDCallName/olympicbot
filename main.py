@@ -81,6 +81,8 @@ conversation_handler = ConversationHandler(
 )
 inline_handler = InlineQueryHandler(inline_function)
 
+print(inline_handler)
+
 # Устанавливаем какие-то держатели окончательно
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(conversation_handler)
