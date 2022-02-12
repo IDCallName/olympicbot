@@ -19,7 +19,7 @@ dispatcher = updater.dispatcher
 
 ## Подключение к БД
 #DATABASE = psycopg2.connect(dbname='dc9mv72g5rq199', user='expfuoggsoeeqp', password='', host='ec2-54-220-170-192.eu-west-1.compute.amazonaws.com')
-CURSOR = DATABASE.cursor()
+#CURSOR = DATABASE.cursor()
 
 # Команды
 from telegram.ext import ConversationHandler
