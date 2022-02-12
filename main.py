@@ -58,7 +58,7 @@ from telegram.ext import filters
 
 start_handler = CommandHandler('start', cmd_start)
 conversation_handler = ConversationHandler(
-    entry_points = [CommandHandler('go', msg_question],
+    entry_points = [CommandHandler('go', msg_question)],
     
     states = {
         STATE_QUESTION: [MessageHandler(filters.Filters.text, msg_question)],
