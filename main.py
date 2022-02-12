@@ -26,7 +26,7 @@ from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
 
 def cmd_start(update, context):
-    markup = InlineKeyboardMarkup([[InlineKeyboardButton("wtf")]])
+    markup = InlineKeyboardMarkup([[InlineKeyboardButton("wtf", url="google.com")]])
     
     context.bot.send_message(chat_id=update.effective_chat.id, text="Привет, я олимпиадный бот!", reply_markup=markup)
 
