@@ -28,30 +28,27 @@ def cmd_start(update, context):
 
 # Когда привет
 def msg_greetings(update, context):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Привет!")
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Мы можем предложить тебе пару развлечений на вечер. Что ты хочешь, на сегодня мы можем
-                             'предложить тебе следующее: посмотреть лекцию, послушать подкасть или выбрать ближайщее мероприятие. Чтобы ответить на этот вопрос просто напиши действие!")
-    context.bot.send_message(chat_id=update.effective_chat.id, text="У нашего бота есть несколько правил:
-                             'Когда бот задает тебе вопрос отвечай 'да', либо 'нет' в зависимости от твоих желаний. Также, если ты передумал и не захотел ничего из предложенного, напиши вновь '/start'")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="ф")
+    context.bot.send_message(chat_id=update.effective_chat.id, text="б")
     
     return ERMITAZH_REPLY
 
 # Ответы на вопрос об эрмитаже
 def msg_ermitazh_reply(update, context):
     if(update.effective_message.text == "Да"):
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Подними свою жопу и дойди до эрмитажа самостоятельно")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="а")
         return ConversationHandler.END
     elif(update.effective_message.text == "Нет"):
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Хорошо, что на счет лекции про основные философские вопросы на Арзамас?")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="б")
         return ARAMZAS_REPLY
     
 # Ответы на вопрос о арамзамзам
 def msg_aramzas_reply(update, context):
     if(update.effective_message.text == "Да"):
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Отлично, вот ссылка: https://arzamas.academy/materials/1771")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="а")
         return ConversationHandler.END
     elif(update.effective_message.text == "Нет"):
-        context.bot.send_message(chat_id=update.effective_chat.id, text="Иди в пизду, блять, то ему не нравится, это ему не нравится, иди нахуй просто")
+        context.bot.send_message(chat_id=update.effective_chat.id, text="б")
         return ConversationHandler.END
 
 
